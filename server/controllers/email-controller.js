@@ -9,12 +9,12 @@ exports.emailVerification = async (req, res, next) => {
 
   if (!errors.isEmpty()) {
     return next(
-      customError("Invalid inputd passed, please check your data.", 422))
+      customError("Invalid inputd passed, please check your data.", 422));
   }
 
   let existingUser;
   try {
-    existingUser = await User.findOne({ email })
+    existingUser = await User.findOne({ email });
   } catch (err) {
     const error = customError(
       "Sign up failed, please try again later",
@@ -30,9 +30,16 @@ exports.emailVerification = async (req, res, next) => {
  
     return next(error);
   }
+
   let verifyCode;
+  let tempUser;
   try {
     verifyCode = randomString(8);
+
+    tempUser = new User({
+      email,
+      confirmationCode: verifyCode
+    })
   } catch (err) {
     const error = customError(
       "Sign up failed, please try again later",
@@ -40,5 +47,16 @@ exports.emailVerification = async (req, res, next) => {
     );
     return next(error);
   }
-  res.status(200).json({code: verifyCode})
+
+  if (tempUser) {
+    await tempUser.save();
+  } else {
+    const error = customError(
+      "Sign up failed, please try again later",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({code: verifyCode, message: "We sent a code for the verification, please check your email"})
 };

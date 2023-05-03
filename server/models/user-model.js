@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
   first_name: {
     type: String,
-    required: true
   },
   last_name: {
     type: String,
-    required: true
   },
   email: {
     type: String,
@@ -16,11 +14,19 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String, 
-    required: true,
     minlength: 8
   },
   image: {
     type: String,
+  },
+  active: {
+    type: String,
+    enum:[ "Pending", "Active"],
+    default: "Pending"
+  },
+  confirmationCode: {
+    type: String,
+    unique: true
   }
 }, { timestamps: true });
 

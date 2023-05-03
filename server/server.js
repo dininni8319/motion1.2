@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require('mongoose');
+const connectDB = require("./db/connect");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const morgan = require("morgan");
@@ -23,16 +23,18 @@ app.use((error, req, res, next) => {
     .json({ message:error.message || "An unknown error occured!"});
 });
 
-mongoose
-  .connect(process.env.DATABASE)
-  .then(() => {
-    app.listen(process.env.PORT , ()=> {
-      console.log("Connected to mongoDB on port:", process.env.PORT);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const port = process.env.PORT;
+const start = async () => {
+  try {
+    await connectDB(process.env.DATABASE)
+    app.listen(port, () => {
+      console.log("connected to MongoDB on the port:",port);
+    })
+  } catch (error) {
+    console.log(error || "Something when wrong!");
+  }
+}
 
+start();
 
 
