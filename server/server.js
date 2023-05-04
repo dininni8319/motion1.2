@@ -19,6 +19,7 @@ app.use(notFound);
 
 app.use((error, req, res, next) => {
    res
+    // .status(error.code || 500)
     .status(error.code || 500)
     .json({ message:error.message || "An unknown error occured!"});
 });
@@ -36,5 +37,7 @@ const start = async () => {
 }
 
 start();
+
+module.exports = { app };
 
 

@@ -103,20 +103,20 @@ exports.signin = async (req, res, next) => {
   } catch (err) {
     const error = customError(
       "Something went wrong!",
-      500
+      400
     )
     return next(error);
   }
  
   let isValidPassword;
-  let hash = emailExists.password;
+  let hash = emailExists?.password;
   try {
     isValidPassword = await validPassword(hash,password);
     
   } catch (err) {
     const error = customError(
       "Something went wrong!",
-      500
+      400
     );
     return next(error);
   }

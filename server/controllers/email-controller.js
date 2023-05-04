@@ -3,7 +3,6 @@ const { validationResult } = require("express-validator");
 const User = require("../models/user-model");
 const randomString = require("../utils/randomCode");
 const Transporter = require("../mail/trasporter");
-const nodemailer = require("nodemailer");
 
 exports.emailVerification = async (req, res, next) => {
   const { email } = req.body;

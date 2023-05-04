@@ -38,6 +38,8 @@ Help to create slugs<br/>
 Package cloudinary<br/>
 #npm i cloudinary<br/>
 
+<h3>Testing packages</h3>
+npm i jest supertest cross-env <br/>
 https://codecontinue.com/article/<br/>deploy-react-node-mern-full-stack-app-to-digital-ocean<br/>
 
 <h2>Full-Stack Developer ___ <span>Salvatore Dininni</span></h2>
