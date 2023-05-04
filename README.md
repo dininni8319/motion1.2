@@ -1,44 +1,44 @@
 <h1>Project Title: MERN Stack Social Media App</h1>
 
 <h3>Packages for the <strong>Client:</strong></h3>
-#npx create-react-app "name"
-#npm i react-router-dom
+#npx create-react-app "name"<br/>
+#npm i react-router-dom<br/>
 
 <h3>Roeact Router</h3>
-#npm uninstall react-router-dom
-#npm install react-router-dom@5.2
+#npm uninstall react-router-dom<br/>
+#npm install react-router-dom@5.2<br/>
 
 <h3>Other packages:</h3>
-#npm i react-toastify
+#npm i react-toastify<br/>
 
-Redux install:
-#npm i redux react-redux redux-devtools-extension
+Redux install:<br/>
+#npm i redux react-redux redux-devtools-extension<br/>
 
 <h3>Axios installation</h3>
-#npm i axios
+#npm i axios<br/>
 
 <h3>Package for image resize</h3>
-#npm i react-image-file-resizer
+#npm i react-image-file-resizer<br/>
 
-#typewriter effect package
-npm i typewriter-effect --force
+#typewriter effect package<br/>
+npm i typewriter-effect --force<br/>
 
-#npm i react-quill
+#npm i react-quill<br/>
 
 <h3>Packages for the <strong>Backend</strong></h3>
--initialize npm package with commant
-#npm init -y
-#npm i express
-#npm i nodemon -D
-#npm i body-parser mongoose cors express-jwt jsonwebtoken dotenv
-#npm i express-validator
-Help to create slugs
-#npm i slugify
+-initialize npm package with commant<br/>
+#npm init -y<br/>
+#npm i express<br/>
+#npm i nodemon -D<br/>
+#npm i body-parser mongoose cors express-jwt jsonwebtoken dotenv<br/>
+#npm i express-validator<br/>
+Help to create slugs<br/>
+#npm i slugify<br/>
+#npm i jsonwebtoken -s <br/>
+Package cloudinary<br/>
+#npm i cloudinary<br/>
 
-Package cloudinary
-#npm i cloudinary
-
-https://codecontinue.com/article/deploy-react-node-mern-full-stack-app-to-digital-ocean
+https://codecontinue.com/article/<br/>deploy-react-node-mern-full-stack-app-to-digital-ocean<br/>
 
 <h2>Full-Stack Developer ___ <span>Salvatore Dininni</span></h2>
 
