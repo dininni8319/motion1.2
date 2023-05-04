@@ -18,7 +18,6 @@ function randomString(length = 8) {
     result += randomChar();
     length--;
   }
-  console.log(result, 'RESULT');
   return result;
 }
 
