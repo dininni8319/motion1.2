@@ -4,13 +4,15 @@ const { findUser } = require("../email/find-user-action");
 const { verifyCode } = require("./verification-code-action");
 const { loginValidation } = require("./login-validation-action");
 const { createUser } = require("./create-user-action");
+const { findUserProfile } = require("./profile-user-action");
 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     return next(
-      customError("Invalid inputd passed, please check your data.", 422))
+      customError("Invalid inputd passed, please check your data.", 422)
+    )
   }
 
   await verifyCode(req, res, next);
@@ -56,6 +58,22 @@ exports.signin = async (req, res, next) => {
     );
     return next(error);
   }
+};
+
+exports.userProfile = async (req, res, next) => {
+  const { userId } = req.userData;
+
+  let user = await findUserProfile(next, userId);
+
+  if (!user || !userId) {
+    const error = customError(
+      "I did not find any user profile",
+      500
+    );
+    return next(error);
+  }
+
+  res.json({user: user.toObject({ getters: true })});
 };
 
 

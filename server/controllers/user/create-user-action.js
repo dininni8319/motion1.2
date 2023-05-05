@@ -6,7 +6,7 @@ exports.createUser = async (req, res, next) => {
   const { first_name, last_name, email } = req.body;
   let hashPassword = await hashedPassword(req, res, next);
   let newUser;
-  
+
   if (hashPassword) {
     const user = {
       first_name,
@@ -34,6 +34,5 @@ exports.createUser = async (req, res, next) => {
 
     return next(error);
   }
-  
   return newUser;
 };
