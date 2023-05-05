@@ -1,9 +1,10 @@
+const User = require("../../models/user-model");
 const { customError } = require("../../error/http-error");
 const { validationResult } = require("express-validator");
-const User = require("../../models/user-model");
 const { findUser } = require("./find-user-action");
 const { sendCodeWithEmail } = require("./sendemail-action");
 const { generateCode } = require("./generate-code-action");
+const { createTempUserAction } = require("./create-tempuser-action");
 const randomString = require("../../utils/randomCode");
 
 exports.emailVerification = async (req, res, next) => {
@@ -17,33 +18,16 @@ exports.emailVerification = async (req, res, next) => {
   // looks if the user exists, if it does then it will throw an error
   await findUser(next, email);
  
-  let verifyCode;
-  let tempUser;
-  try {
-    verifyCode = randomString(8);
+  let verifyCode = randomString(8);
 
-    tempUser = new User({
-      email,
-      confirmationCode: verifyCode
-    })
-  } catch (err) {
-    const error = customError(
-      "Sign up failed, please try again later",
-      500
-    );
-    return next(error);
-  }
-
-  if (tempUser) {
-    await tempUser.save();
-  } else {
-    const error = customError(
-      "Sign up failed, please try again later",
-      500
-    );
-      return next(error);
-  }
+  const fail = await createTempUserAction(next, verifyCode, email);
   
+  if (!fail) {
+    return next(
+      customError("Something went wrong.....", 500)
+    );
+  }
+
   await sendCodeWithEmail(verifyCode, email);
   
   res.status(200).json({code: verifyCode, message: "We sent a code for the verification, please check your email"})

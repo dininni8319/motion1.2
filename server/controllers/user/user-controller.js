@@ -5,6 +5,7 @@ const { verifyCode } = require("./verification-code-action");
 const { loginValidation } = require("./login-validation-action");
 const { createUser } = require("./create-user-action");
 const { findUserProfile } = require("./profile-user-action");
+const { updateProfileAction } = require("./update-profile-action");
 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -35,7 +36,6 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signin = async (req, res, next) => {
-
   const { email, password } = req.body;
 
   let sendExistingUser = false;
@@ -76,5 +76,18 @@ exports.userProfile = async (req, res, next) => {
   res.json({user: user.toObject({ getters: true })});
 };
 
+exports.userUpdateProfile = async (req, res, next) => {
+  let updatedProfile = await updateProfileAction(req, res, next);
+
+  if (!updatedProfile) {
+    const error = customError(
+      "Your profile was not update",
+      500
+    );
+    return next(error);
+  }
+
+  res.json(updatedProfile);
+};
 
 

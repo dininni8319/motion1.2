@@ -12,12 +12,25 @@ const UserSchema = mongoose.Schema({
     required: true,
     unique: true
   },
+  phone: {
+   type: String,
+  },
+  address: {
+    type: String, 
+    maxLength: 500,
+  },
+  city: {
+    type: String
+  },
+  pcode: {
+   type: String
+  },
   password: {
     type: String, 
     minlength: 8
   },
   image: {
-    type: String,
+    type: String
   },
   active: {
     type: String,
