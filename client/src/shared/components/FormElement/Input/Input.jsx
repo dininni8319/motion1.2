@@ -11,18 +11,27 @@ const Input = ({
   inputElement,
   rows,
   icon,
-  errorText
+  errorText,
 }) => {
 
   const initialState = {
     // value:  initialValue || "",
      value: "",
     // isValid: initialValid || false   
-    isValid:  false   
+    isValid:  true  
   };
   const [ inputState, dispatch ] = useReducer(inputReducer, initialState);
 
-  const changeHandler = event => {};
+  // console.log('====================================');
+  // console.log(inputState);
+  // console.log('====================================');
+  const changeHandler = event => {
+    dispatch({
+      type: "ON_CHANGE",
+      val: event.target.value,
+      validators: true      
+    })
+  };
 
   const element = inputElement === "input" ? (
     <AuthInput
@@ -31,7 +40,6 @@ const Input = ({
       placeholder={placeHolder}
       onChange={changeHandler}
       value={inputState.value}
-  
     />
   ) : (
     <textarea
