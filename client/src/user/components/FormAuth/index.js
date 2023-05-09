@@ -1,6 +1,8 @@
 import Input from '../../../shared/components/FormElement/Input/Input';
 import { AuthButton, FormWrapper, SignUpMessage, FormContainer, TopLoginButton, SingInTitle } from './style';
 import { TopTitleWrapper } from '../../../shared/style/globalWrappers';
+import avatar from "../../../shared/assets/svgs/avatar.svg";
+import password from "../../../shared/assets/svgs/password.svg";
 
 // export const 
 const FormLogin = () => {
@@ -19,6 +21,7 @@ const FormLogin = () => {
             // placeHolder=""
             label="Email"
             inputElement="input"
+            icon={avatar}
           />
           <Input
             id="pasword"
@@ -26,6 +29,7 @@ const FormLogin = () => {
             // placeHolder="Password"
             label="Password"
             inputElement="input"
+            icon={password}
           />
           <AuthButton>SIGN IN</AuthButton>
       </FormWrapper>

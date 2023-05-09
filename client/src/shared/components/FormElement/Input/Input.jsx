@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { inputReducer } from '../../../reducers/inputReducer';
-import { FormControl } from '../../../style/globalWrappers';
+import { FormControl, IconWrapper, AuthIcons } from '../../../style/globalWrappers';
 import { AuthInput } from "./InputStyle";
 
 const Input = ({
@@ -10,6 +10,7 @@ const Input = ({
   label,
   inputElement,
   rows,
+  icon,
   errorText
 }) => {
 
@@ -30,6 +31,7 @@ const Input = ({
       placeholder={placeHolder}
       onChange={changeHandler}
       value={inputState.value}
+  
     />
   ) : (
     <textarea
@@ -43,7 +45,10 @@ const Input = ({
 
   return ( 
     <FormControl>
-      <label htmlFor={id}>{label}</label>
+      <IconWrapper>
+        <AuthIcons src={icon} />
+        <label htmlFor={id}>{label}</label>
+      </IconWrapper>
       {element}
       {!inputState && <p>{errorText}</p>}
     </FormControl>

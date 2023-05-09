@@ -11,8 +11,7 @@ const Signin = () => {
  
   return ( 
     <AuthLayout>
-      <LeftContainer>
-      </LeftContainer>
+      <LeftContainer />
       <FormLogin />
     </AuthLayout>
   );

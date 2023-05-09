@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Message } from '../globalTitles';
 import { rem } from 'polished';
+import { Icon } from '../globalIcons';
 
 export const TopTitleWrapper = styled.div`
  height: 10%;
@@ -21,4 +22,12 @@ export const FormControl = styled.div`
     font-weight: bold;
     margin-bottom: ${rem("5px")};
   }
+`;
+
+export const AuthIcons = styled(Icon)`
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;

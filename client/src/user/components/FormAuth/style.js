@@ -44,4 +44,9 @@ export const AuthButton = styled(Button)`
 
 export const TopLoginButton = styled(Button)`
   background-color: white;
+
+  &:hover {
+    transition: 0.3s;
+    background: ${ props => props.theme.grayColor}
+  }
 `;

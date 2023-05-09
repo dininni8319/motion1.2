@@ -13,6 +13,10 @@ export const MainContainer = styled.div`
   background: ${props => props.theme.LinearGradient}, url(${backgroundImg});
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media screen and (max-width: 700px) {
+    display: none
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -80,4 +84,5 @@ export const SocialButtons = styled(Icon)`
   height: 40px;
   width: 40px;
   margin-top: 10%;
+  cursor: pointer;
 `;
