@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LeftContainer from '../components/LeftContainer/';
+import LeftContainer from '../../shared/components/LeftContainer';
 import FormLogin from '../components/FormAuth';
 import styled from 'styled-components';
 

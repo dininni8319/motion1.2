@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import backgroundImg from '../../../shared/assets/images/background_image.png';
-import { Title } from "../../../shared/style/globalTitles";
-import { Icon } from '../../../shared/style/globalIcons';
-import { Button } from '../../../shared/style/globalButtons'
+import { Title } from "../../style/globalTitles";
+import { Icon } from '../../style/globalIcons';
+import { Button } from '../../style/globalButtons'
 import { rem } from 'polished';
 
 export const MainContainer = styled.div`
@@ -17,7 +17,7 @@ export const MainContainer = styled.div`
 
 export const TitleContainer = styled.div`
   width: 100%;
-  height: 66%;
+  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +58,7 @@ export const IconContainer = styled.div`
   grid-column-gap: 15px;
   justify-content: center;
   align-items: center;
-  margin: 2% 0;
+  margin: 5% 0;
 `;
 
 export const AppButtons = styled(Button)`
@@ -74,9 +74,10 @@ export const Signature = styled(Title)`
   color: rgba(255, 255, 255, 0.98); 
   font-size: 12px;
   font-weight: 400;
-`;
+  `;
 
 export const SocialButtons = styled(Icon)`
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
+  margin-top: 10%;
 `;

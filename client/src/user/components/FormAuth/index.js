@@ -10,7 +10,7 @@ const FormLogin = () => {
          <SignUpMessage>Do you have an account?</SignUpMessage>
          <TopLoginButton>SIGN UP</TopLoginButton>
       </TopTitleWrapper>
-      
+
       <FormWrapper>
           <SingInTitle>Sign In</SingInTitle>
           <Input
@@ -28,7 +28,6 @@ const FormLogin = () => {
             inputElement="input"
           />
           <AuthButton>SIGN IN</AuthButton>
-
       </FormWrapper>
     </FormContainer>
    );

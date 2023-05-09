@@ -11,7 +11,7 @@ export const FormContainer = styled.form`
 `;
 
 export const FormWrapper = styled.form`
-  height: 40%;
+  height: 60%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -22,12 +22,16 @@ export const FormWrapper = styled.form`
 export const SignUpMessage = styled(Message)`
   margin-right: ${rem("15px")};
 `; 
+
 export const SingInTitle = styled(Title)`
   margin-bottom: ${rem("40px")};
   text-align: center;
 `;
 
 export const AuthButton = styled(Button)`
+  width: ${rem("300px")};
+  height: ${rem("50px")};
+  margin-top: 10%;
   background: linear-gradient(132.96deg, #C468FF 3.32%, #6E91F6 100%);
   color: white;
   border: none;
@@ -40,5 +44,4 @@ export const AuthButton = styled(Button)`
 
 export const TopLoginButton = styled(Button)`
   background-color: white;
-
 `;

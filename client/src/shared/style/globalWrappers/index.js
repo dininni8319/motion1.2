@@ -14,6 +14,7 @@ export const TopTitleWrapper = styled.div`
 export const FormControl = styled.div`
   label, input, textarea {
     display: block;
+    margin: ${rem("10px")};
   }
 
   label {

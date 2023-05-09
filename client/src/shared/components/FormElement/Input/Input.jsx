@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { inputReducer } from '../../../reducers/inputReducer';
 import { FormControl } from '../../../style/globalWrappers';
+import { AuthInput } from "./InputStyle";
 
 const Input = ({
   id,
@@ -21,9 +22,9 @@ const Input = ({
   const [ inputState, dispatch ] = useReducer(inputReducer, initialState);
 
   const changeHandler = event => {};
-  
+
   const element = inputElement === "input" ? (
-    <input
+    <AuthInput
       id={id}
       type={type}
       placeholder={placeHolder}

@@ -3,8 +3,8 @@ import { rem } from "polished";
 
 export const Input = styled.input`
   font-family: "Roboto", sans-serif;
-  width: 30%;
-  height: ${rem("20px")};
+  width: ${rem("300px")};
+  height: ${rem("40px")};
   border: none;
   outline: none;
   cursor: pointer;
