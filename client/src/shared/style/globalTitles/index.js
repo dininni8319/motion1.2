@@ -10,7 +10,7 @@ export const Title = styled.h2`
 
 export const Message = styled.p`
   font-family: "Roboto", sans-serif;
-  font-size: ${rem("13px")};
-  font-weight: 500;
+  font-size: ${rem("14px")};
+  font-weight: 400;
  `;  
 

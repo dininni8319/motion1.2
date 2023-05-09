@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { inputReducer } from '../../../reducers/inputReducer';
-import { FormControl } from './InputStyle';
+import { FormControl } from '../../../style/globalWrappers';
+
 const Input = ({
   id,
   type,
@@ -19,7 +20,8 @@ const Input = ({
   };
   const [ inputState, dispatch ] = useReducer(inputReducer, initialState);
 
-  const changeHandler = event => {}
+  const changeHandler = event => {};
+  
   const element = inputElement === "input" ? (
     <input
       id={id}

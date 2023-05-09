@@ -1,24 +1,20 @@
 import { useState } from 'react';
-// import Input from '../../shared/components/FormElement/Input/Input'
 import LeftContainer from '../components/LeftContainer/';
+import FormLogin from '../components/FormAuth';
+import styled from 'styled-components';
+
+export const AuthLayout = styled.section`
+  display: flex;
+`;
 
 const Signin = () => {
  
   return ( 
-    // <form>
-    //     <Input
-    //       id="first_name"
-    //       type="text"
-    //       placeHolder="first name"
-    //       label="First Name"
-    //       inputElement="input"
-    //     />
-    // </form>
-    <>
+    <AuthLayout>
       <LeftContainer>
-        <div>Login</div>
       </LeftContainer>
-    </>
+      <FormLogin />
+    </AuthLayout>
   );
 }
  
