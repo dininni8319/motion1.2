@@ -4,15 +4,18 @@ import App from './App';
 // Setup for Styled Components
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './shared/globalStyle'
-
+import { AuthProvider } from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-      <GlobalStyle />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+        <GlobalStyle />
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 
