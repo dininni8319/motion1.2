@@ -1,31 +1,28 @@
-import { useState, useReducer } from 'react';
+import { useState } from 'react';
 import LeftContainer from '../../shared/components/LeftContainer';
 import FormLogin from '../components/FormAuth';
 import styled from 'styled-components';
 import { useHttpClient } from "../../shared/hooks/http-hook"
-import { inputReducer } from "../../shared/reducers/inputReducer";
+import { useForm } from "../../shared/hooks/form-hook";
 
 export const AuthLayout = styled.section`
   display: flex;
 `;
 
-const initialState = {
-  value: "",
-  isValid: false
-};
-
 const url = process.env.REACT_APP_EXPRESS_API;
 
 const Signin = () => {
-  
-  const [ inputState, dispatch ] = useReducer(inputReducer, initialState);
 
-  console.log(inputState, 'INPUTSTATE');
-
-  const login = {
-    email: "s.dininni@yahoo.com",
-    password: "12345678"
-  };
+  const [ formState, inputHandler, setFormData ] = useForm({
+    email: {
+      value: "",
+      isValid: false,
+    },
+    password: {
+      value: "",
+      isValid: false
+    }
+  }, false)
   
   const {
     loading,
@@ -34,6 +31,9 @@ const Signin = () => {
     clearError,
   } = useHttpClient();
   
+  console.log('====================================');
+  console.log(loading);
+  console.log('====================================');
   const loginHandler = async event => {
     event.preventDefault();
     
@@ -41,11 +41,15 @@ const Signin = () => {
         const response = await sendRequest(
           url,
           "POST", 
-          JSON.stringify(login),
+          JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
           {
             "Content-Type": "application/json"
           }
         );
+      
         console.log('====================================');
         console.log(response);
         console.log('====================================');
@@ -56,7 +60,11 @@ const Signin = () => {
   return ( 
     <AuthLayout>
       <LeftContainer />
-      <FormLogin loginHandler={loginHandler} />
+      <FormLogin 
+        loginHandler={loginHandler} 
+        inputHandler={inputHandler}
+        loading={loading}
+      />
     </AuthLayout>
   );
 }

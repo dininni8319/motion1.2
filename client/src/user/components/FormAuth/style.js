@@ -32,7 +32,7 @@ export const AuthButton = styled(Button)`
   width: ${rem("300px")};
   height: ${rem("50px")};
   margin-top: 10%;
-  background: linear-gradient(132.96deg, #C468FF 3.32%, #6E91F6 100%);
+  background: ${props => props.theme.purpleColor};
   color: white;
   border: none;
   outline: none;

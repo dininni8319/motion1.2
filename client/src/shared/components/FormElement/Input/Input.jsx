@@ -1,45 +1,48 @@
 import { useEffect, useReducer } from 'react';
-import { inputReducer } from '../../../reducers/inputReducer';
 import { FormControl, IconWrapper, AuthIcons } from '../../../style/globalWrappers';
 import { AuthInput } from "./InputStyle";
+import { inputReducer } from "../../../reducers/inputReducer";
 
-const Input = ({
-  id,
-  type,
-  placeHolder,
-  label,
-  inputElement,
-  rows,
-  icon,
-  errorText,
-}) => {
+const Input = (props) => {
+ const {
+    id,
+    type,
+    placeHolder,
+    label,
+    inputElement,
+    rows,
+    icon,
+    errorText,
+    onInput
+  } = props;
 
   const initialState = {
-    // value:  initialValue || "",
-     value: "",
-    // isValid: initialValid || false   
-    isValid:  true  
+    value: props.initialValue || "",
+    isTouched: false, 
+    isValid: props.initialValid || false 
   };
+
   const [ inputState, dispatch ] = useReducer(inputReducer, initialState);
 
-  // console.log('====================================');
-  // console.log(inputState);
-  // console.log('====================================');
   const changeHandler = event => {
     dispatch({
       type: "ON_CHANGE",
       val: event.target.value,
-      validators: true      
+      validators: props.validators    
     })
   };
 
+  useEffect(() => {
+     onInput(id, inputState.value, inputState.isValid);
+  }, [id, inputState.value, inputState.isValid]);
+  
   const element = inputElement === "input" ? (
     <AuthInput
       id={id}
       type={type}
       placeholder={placeHolder}
       onChange={changeHandler}
-      value={inputState.value}
+      value={inputState?.value}
     />
   ) : (
     <textarea
@@ -47,10 +50,9 @@ const Input = ({
       row={rows || 3}    
       placeholder={placeHolder}
       onChange={changeHandler}
-      value={inputState.value}
+      value={inputState?.value}
     />
-  )
-
+  );
   return ( 
     <FormControl>
       <IconWrapper>
