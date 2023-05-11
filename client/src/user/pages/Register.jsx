@@ -12,7 +12,7 @@ export const AuthLayout = styled.section`
 
 const url = process.env.REACT_APP_EXPRESS_API;
 
-const Signin = () => {
+const Signup = () => {
 
   const { user, login } = useContext(AuthContext)
   
@@ -62,14 +62,9 @@ const Signin = () => {
   return ( 
     <AuthLayout>
       <LeftContainer />
-      <FormLogin 
-        loginHandler={loginHandler} 
-        inputHandler={inputHandler}
-        loading={loading}
-        formState={formState}
-      />
+      
     </AuthLayout>
   );
 }
  
-export default Signin;
+export default Signup;

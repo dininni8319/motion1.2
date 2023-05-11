@@ -4,15 +4,20 @@ import { AuthButton, FormWrapper, SignUpMessage, FormContainer, TopLoginButton, 
 import { TopTitleWrapper } from '../../../shared/style/globalWrappers';
 import avatar from "../../../shared/assets/svgs/avatar.svg";
 import password from "../../../shared/assets/svgs/password.svg";
-import { VALIDATOR_EMAIL, VALIDATOR_MIN } from '../../../shared/util/validators';
+import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../../shared/util/validators';
+import { Link } from 'react-router-dom';
 
-const FormLogin = ({ loginHandler, inputHandler, loading }) => {
+const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
   
   return ( 
     <FormContainer>
       <TopTitleWrapper>
          <SignUpMessage>Do you have an account?</SignUpMessage>
-         <TopLoginButton>SIGN UP</TopLoginButton>
+         <TopLoginButton>
+           <Link to="/auth/signup">
+             SIGN UP
+           </Link>
+         </TopLoginButton>
       </TopTitleWrapper>
       <FormWrapper onSubmit={loginHandler}>
           { loading && <LoadingSpinner asOverlay />}
@@ -20,24 +25,22 @@ const FormLogin = ({ loginHandler, inputHandler, loading }) => {
           <Input
             id="email"
             type="email"
-            // placeHolder=""
             label="Email"
             inputElement="input"
             icon={avatar}
-            validators={[VALIDATOR_MIN(8)]}
+            validators={[VALIDATOR_EMAIL()]}
             onInput={inputHandler}
           />
           <Input
             id="password"
             type="password"
-            // placeHolder="Password"
             label="Password"
             inputElement="input"
             icon={password}
-            validators={[VALIDATOR_EMAIL()]}
+            validators={[VALIDATOR_MINLENGTH(8)]}
             onInput={inputHandler}
           />
-          <AuthButton onClick={loginHandler} disabled={loading}>SIGN IN</AuthButton>
+          <AuthButton onClick={loginHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>SIGN IN</AuthButton>
       </FormWrapper>
     </FormContainer>
    );

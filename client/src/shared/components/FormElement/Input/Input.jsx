@@ -32,17 +32,24 @@ const Input = (props) => {
     })
   };
 
+  const touchHandler = () => {
+    dispatch({
+      type: "TOUCH"
+    })
+  }
   useEffect(() => {
      onInput(id, inputState.value, inputState.isValid);
   }, [id, inputState.value, inputState.isValid]);
   
   const element = inputElement === "input" ? (
     <AuthInput
+      formInvalid={!inputState.value && inputState.isTouched}
       id={id}
       type={type}
       placeholder={placeHolder}
       onChange={changeHandler}
       value={inputState?.value}
+      onBlur={touchHandler}
     />
   ) : (
     <textarea
@@ -51,6 +58,7 @@ const Input = (props) => {
       placeholder={placeHolder}
       onChange={changeHandler}
       value={inputState?.value}
+      onBlur={touchHandler}
     />
   );
   return ( 
@@ -60,7 +68,7 @@ const Input = (props) => {
         <label htmlFor={id}>{label}</label>
       </IconWrapper>
       {element}
-      {!inputState && <p>{errorText}</p>}
+      {!inputState.isValid && <p>{errorText}</p>}
     </FormControl>
    );
 }

@@ -32,13 +32,13 @@ export const AuthButton = styled(Button)`
   width: ${rem("300px")};
   height: ${rem("50px")};
   margin-top: 10%;
-  background: ${props => props.theme.purpleColor};
-  color: white;
+  background: ${props => props.formIsValid ? "#ccc" : props.theme.purpleColor };
+  color: ${props => props.formIsValid ? "#979797" : "white"};
   border: none;
   outline: none;
 
   &:hover {
-    background: ${props => props.theme.LinearGradientHover};
+    background: ${props => props.formIsValid ? "#ccc" : props.theme.LinearGradientHover};
   }
 `;
 

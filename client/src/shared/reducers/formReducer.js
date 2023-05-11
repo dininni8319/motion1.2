@@ -1,3 +1,5 @@
+
+// the formReducer,it handles the overall state of the form
 export const formReducer = (state, action) => {
   switch (action.type) {
     case "INPUT_CHANGE":
@@ -7,11 +9,12 @@ export const formReducer = (state, action) => {
        if (!state.inputs[inputId]) {
           continue;
        }
-       
+        // input change
        if (inputId === action.inputId) {
-         formIsValid = formIsValid && action.isValid;
-       } else {
-         formIsValid = formIsValid && state.inputs[inputId].isValid
+         formIsValid = formIsValid && action.isValid; // looping through the object and checking if we are updating the obj with input change 
+       } else { // here get the input validity of the inputs not been updated
+        // not updated from the current running action 
+        formIsValid = formIsValid && state.inputs[inputId].isValid
        }
      };
 
@@ -19,6 +22,7 @@ export const formReducer = (state, action) => {
        ...state,
        inputs: {
          ...state.inputs,
+          // this make sure that we update only on input not update the others
          [action.inputId]: {value: action.value, isValid: action.isValid}
        }, 
        isValid: formIsValid
