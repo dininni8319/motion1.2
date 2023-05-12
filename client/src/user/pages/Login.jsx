@@ -38,7 +38,6 @@ const Signin = () => {
   
   const loginHandler = async event => {
     event.preventDefault();
-    
       try {
         const response = await sendRequest(
           url,
@@ -51,7 +50,6 @@ const Signin = () => {
             "Content-Type": "application/json"
           }
         );
-
         login(
           response.userName.first_name,
           response.userName.last_name,

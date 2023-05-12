@@ -3,7 +3,7 @@ import backgroundImg from '../../../shared/assets/images/background_image.png';
 import { Title } from "../../style/globalTitles";
 import { Icon } from '../../style/globalIcons';
 import { Button } from '../../style/globalButtons'
-import { rem } from 'polished';
+// import { rem } from 'polished';
 
 export const MainContainer = styled.div`
   width: 40%;
