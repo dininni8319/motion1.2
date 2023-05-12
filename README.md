@@ -4,12 +4,14 @@
 #npx create-react-app "name"<br/>
 #npm i react-router-dom<br/>
 
-<h3>Roeact Router</h3>
+<h3>React Router</h3>
 #npm uninstall react-router-dom<br/>
 #npm install react-router-dom@5.2<br/>
 
 <h3>Other packages:</h3>
 #npm i react-toastify<br/>
+<h3>React Transition</h3>
+npm install react-transition-group --save
 
 Redux install:<br/>
 #npm i redux react-redux redux-devtools-extension<br/>

@@ -1,6 +1,6 @@
 import { LoadingSpinnerOverlay } from "./style";
 
-const LoadingSpinner = ({ asOverlay }) => {
+const Loader = ({ asOverlay }) => {
   return (
     <LoadingSpinnerOverlay >
       <div className="lds-dual-ring"></div>
@@ -8,4 +8,4 @@ const LoadingSpinner = ({ asOverlay }) => {
   );
 }
 
-export default LoadingSpinner;
+export default Loader;

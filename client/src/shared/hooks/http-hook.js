@@ -15,8 +15,7 @@ export const useHttpClient = () => {
         body,
         headers
       }
-     )
-
+     );
      const responseData = await response.json();
       
      if(!response.ok) {

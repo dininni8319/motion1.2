@@ -1,10 +1,12 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LeftContainer from '../../shared/components/LeftContainer';
-import FormLogin from '../components/FormAuth';
+import FormLogin from '../components/FormSignin';
 import styled from 'styled-components';
 import { useHttpClient } from "../../shared/hooks/http-hook"
 import { useForm } from "../../shared/hooks/form-hook";
 import { AuthContext } from "../../context/AuthContext";
+import ErrorModal from '../components/Modal/ErrorModal';
 
 export const AuthLayout = styled.section`
   display: flex;
@@ -14,8 +16,8 @@ const url = process.env.REACT_APP_EXPRESS_API;
 
 const Signin = () => {
 
+  const navigate = useNavigate();
   const { user, login } = useContext(AuthContext)
-  
   const [ formState, inputHandler, setFormData ] = useForm({
     email: {
       value: "",
@@ -54,13 +56,15 @@ const Signin = () => {
           response.userName.first_name,
           response.userName.last_name,
           response.token
-        )
+        );
+        navigate("/")
       } catch (err) {  
       } 
   };
 
   return ( 
     <AuthLayout>
+      <ErrorModal onClear={clearError} error={error} />
       <LeftContainer />
       <FormLogin 
         loginHandler={loginHandler} 

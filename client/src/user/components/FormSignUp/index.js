@@ -7,7 +7,7 @@ import {
   FormContainer, 
   TopLoginButton, 
   SingInTitle 
-} from '../FormAuth/style';
+} from '../FormSignin/style';
 import { TopTitleWrapper } from '../../../shared/style/globalWrappers';
 import avatar from "../../../shared/assets/svgs/avatar.svg";
 // import password from "../../../shared/assets/svgs/password.svg";

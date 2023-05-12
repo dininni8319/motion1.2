@@ -20,7 +20,7 @@ const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
          </TopLoginButton>
       </TopTitleWrapper>
       <FormWrapper onSubmit={loginHandler}>
-          { loading && <LoadingSpinner asOverlay />}
+          
           <SingInTitle>Sign In</SingInTitle>
           <Input
             id="email"
@@ -42,7 +42,10 @@ const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
             onInput={inputHandler}
             errorText="Please enter a valid password"
           />
-          <AuthButton onClick={loginHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>SIGN IN</AuthButton>
+          <AuthButton onClick={loginHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>
+            
+            {loading ? <LoadingSpinner asOverlay /> : "SIGN IN"}
+          </AuthButton>
       </FormWrapper>
     </FormContainer>
    );
