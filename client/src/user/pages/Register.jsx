@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import LeftContainer from '../../shared/components/LeftContainer';
-import FormLogin from '../components/FormSignin';
+import FormSignUp from '../components/FormSignUp';
 import styled from 'styled-components';
 import { useHttpClient } from "../../shared/hooks/http-hook"
 import { useForm } from "../../shared/hooks/form-hook";
@@ -30,7 +30,7 @@ const Signup = () => {
     clearError,
   } = useHttpClient();
   
-  const loginHandler = async event => {
+  const signupHandler = async event => {
     event.preventDefault();
     
       try {
@@ -57,8 +57,13 @@ const Signup = () => {
 
   return ( 
     <AuthLayout>
-      <LeftContainer />
-      {/* <FormSignUp */}
+      <LeftContainer/>
+      <FormSignUp 
+         signupHandler={signupHandler}
+         inputHandler={inputHandler}
+         loading={loading}
+         formState={formState}
+      />
     </AuthLayout>
   );
 }

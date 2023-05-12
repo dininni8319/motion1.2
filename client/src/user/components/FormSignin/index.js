@@ -14,13 +14,12 @@ const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
       <TopTitleWrapper>
          <SignUpMessage>Do you have an account?</SignUpMessage>
          <TopLoginButton>
-           <Link to="/auth/signup">
+           <Link to="/auth/register">
              SIGN UP
            </Link>
          </TopLoginButton>
       </TopTitleWrapper>
       <FormWrapper onSubmit={loginHandler}>
-          
           <SingInTitle>Sign In</SingInTitle>
           <Input
             id="email"

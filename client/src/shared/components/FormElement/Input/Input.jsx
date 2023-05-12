@@ -13,7 +13,8 @@ const Input = (props) => {
     rows,
     icon,
     errorText,
-    onInput
+    onInput,
+    email
   } = props;
 
   const initialState = {
@@ -64,10 +65,12 @@ const Input = (props) => {
   return ( 
     <FormControl>
       <IconWrapper>
-        <AuthIcons src={icon} />
+        {icon && <AuthIcons src={icon} />}
         <label htmlFor={id}>{label}</label>
       </IconWrapper>
-      {element}
+      <IconWrapper>
+        <AuthIcons src={email} /> {element} 
+      </IconWrapper>
       {!inputState.isValid && inputState.isTouched && <ErrorTag>{errorText}</ErrorTag>}
     </FormControl>
    );

@@ -9,41 +9,40 @@ import {
   SingInTitle 
 } from '../FormSignin/style';
 import { TopTitleWrapper } from '../../../shared/style/globalWrappers';
-import avatar from "../../../shared/assets/svgs/avatar.svg";
-// import password from "../../../shared/assets/svgs/password.svg";
-import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../../shared/util/validators';
+import email from "../../../shared/assets/svgs/email.png";
+import { VALIDATOR_EMAIL } from '../../../shared/util/validators';
 import { Link } from 'react-router-dom';
 
-const FormLogin = ({ signupHandler, inputHandler, loading, formState }) => {
+const FormRegister = ({ signupHandler, inputHandler, loading, formState }) => {
   
   return ( 
     <FormContainer>
       <TopTitleWrapper>
-         <SignUpMessage>Do you have an account?</SignUpMessage>
+         <SignUpMessage>You already have an occunt?</SignUpMessage>
          <TopLoginButton>
-           <Link to="/auth/signup">
-             SIGN UP
+           <Link to="/auth/login">
+             SIGN IN
            </Link>
          </TopLoginButton>
       </TopTitleWrapper>
       <FormWrapper onSubmit={signupHandler}>
           { loading && <LoadingSpinner asOverlay />}
-          <SingInTitle>Sign In</SingInTitle>
+          <SingInTitle>Sign Up</SingInTitle>
           <Input
             id="email"
             type="email"
             label="Email"
             inputElement="input"
-            icon={avatar}
+            email={email}
             validators={[VALIDATOR_EMAIL()]}
             onInput={inputHandler}
             errorText="Email required"
           />
        
-          <AuthButton onClick={signupHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>SIGN UP</AuthButton>
+          <AuthButton onClick={signupHandler} formIsValid={!formState?.isValid}>SEND</AuthButton>
       </FormWrapper>
     </FormContainer>
    );
 }
  
-export default FormLogin;
+export default FormRegister;

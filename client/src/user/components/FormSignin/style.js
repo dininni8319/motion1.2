@@ -3,7 +3,7 @@ import { Title, Message } from '../../../shared/style/globalTitles';
 import { Button } from '../../../shared/style/globalButtons';
 import { rem } from 'polished';
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
