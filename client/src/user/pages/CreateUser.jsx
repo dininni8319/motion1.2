@@ -1,28 +1,23 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LeftContainer from '../../shared/components/LeftContainer';
-import FormLogin from '../components/FormSignin';
-import styled from 'styled-components';
+import FormSignUp from '../components/FormSignUp';
 import { useHttpClient } from "../../hooks/http-hook"
 import { useForm } from "../../hooks/form-hook";
 import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from '../components/Modal/ErrorModal';
-import { AuthLayout } from "../../shared/style/globalWrappers"
 import { url } from "../../shared/util/urls";
+import { AuthLayout } from "../../shared/style/globalWrappers"
 
-const Signin = () => {
-
+const CreateUser = () => {
   const navigate = useNavigate();
   const { user, login } = useContext(AuthContext)
+  
   const [ formState, inputHandler, setFormData ] = useForm({
     email: {
       value: "",
       isValid: false,
     },
-    password: {
-      value: "",
-      isValid: false
-    }
   }, false)
   
   const {
@@ -32,42 +27,38 @@ const Signin = () => {
     clearError,
   } = useHttpClient();
   
-  const loginHandler = async event => {
+  const signupHandler = async event => {
     event.preventDefault();
+    
       try {
         const response = await sendRequest(
-          `${url}/social/signin`,
+          `${url}/email/verify`,
           "POST", 
           JSON.stringify({
             email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
           }),
           {
             "Content-Type": "application/json"
           }
         );
-        login(
-          response.userName.first_name,
-          response.userName.last_name,
-          response.token
-        );
-        navigate("/")
-      } catch (err) {  
-      } 
+       console.log(response, "RESPONSE FROM THE EMAIL");
+      } catch (err) { 
+      }
+      // navigate("/auth/success")
   };
 
   return ( 
     <AuthLayout>
       <ErrorModal onClear={clearError} error={error} />
-      <LeftContainer />
-      <FormLogin 
-        loginHandler={loginHandler} 
-        inputHandler={inputHandler}
-        loading={loading}
-        formState={formState}
+      <LeftContainer/>
+      <FormSignUp 
+         signupHandler={signupHandler}
+         inputHandler={inputHandler}
+         loading={loading}
+         formState={formState}
       />
     </AuthLayout>
   );
 }
  
-export default Signin;
+export default CreateUser;

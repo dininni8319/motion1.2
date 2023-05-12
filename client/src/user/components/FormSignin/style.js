@@ -26,7 +26,9 @@ export const SignUpMessage = styled(Message)`
 export const SingInTitle = styled(Title)`
   margin-bottom: ${rem("40px")};
   text-align: center;
+  font-weight: ${props => props.weight ? "400" : "300"}
 `;
+
 
 export const AuthButton = styled(Button)`
   width: ${rem("300px")};
@@ -36,6 +38,8 @@ export const AuthButton = styled(Button)`
   color: ${props => props.formIsValid ? "#979797" : "white"};
   border: none;
   outline: none;
+  padding-top: ${props => props.successBtn ? "5px" : 0};
+  font-size:  ${props => props.successBtn ? "14px" : "12px"};
 
   &:hover {
     background: ${props => props.formIsValid ? "#ccc" : props.theme.LinearGradientHover};

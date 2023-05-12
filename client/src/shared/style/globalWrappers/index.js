@@ -3,6 +3,11 @@ import { Message } from '../globalTitles';
 import { rem } from 'polished';
 import { Icon } from '../globalIcons';
 
+
+export const AuthLayout = styled.section`
+  display: flex;
+`;
+
 export const TopTitleWrapper = styled.div`
  height: 10%;
  width: 100%;
