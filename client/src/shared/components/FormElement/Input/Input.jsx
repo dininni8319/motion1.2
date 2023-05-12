@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import { FormControl, IconWrapper, AuthIcons } from '../../../style/globalWrappers';
+import { FormControl, IconWrapper, AuthIcons, ErrorTag } from '../../../style/globalWrappers';
 import { AuthInput } from "./InputStyle";
 import { inputReducer } from "../../../reducers/inputReducer";
 
@@ -68,7 +68,7 @@ const Input = (props) => {
         <label htmlFor={id}>{label}</label>
       </IconWrapper>
       {element}
-      {!inputState.isValid && <p>{errorText}</p>}
+      {!inputState.isValid && inputState.isTouched && <ErrorTag>{errorText}</ErrorTag>}
     </FormControl>
    );
 }

@@ -1,13 +1,20 @@
 import Input from '../../../shared/components/FormElement/Input/Input';
 import LoadingSpinner from '../../../shared/components/UI/Loader'
-import { AuthButton, FormWrapper, SignUpMessage, FormContainer, TopLoginButton, SingInTitle } from './style';
+import { 
+  AuthButton, 
+  FormWrapper, 
+  SignUpMessage, 
+  FormContainer, 
+  TopLoginButton, 
+  SingInTitle 
+} from '../FormAuth/style';
 import { TopTitleWrapper } from '../../../shared/style/globalWrappers';
 import avatar from "../../../shared/assets/svgs/avatar.svg";
-import password from "../../../shared/assets/svgs/password.svg";
+// import password from "../../../shared/assets/svgs/password.svg";
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../../shared/util/validators';
 import { Link } from 'react-router-dom';
 
-const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
+const FormLogin = ({ signupHandler, inputHandler, loading, formState }) => {
   
   return ( 
     <FormContainer>
@@ -19,7 +26,7 @@ const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
            </Link>
          </TopLoginButton>
       </TopTitleWrapper>
-      <FormWrapper onSubmit={loginHandler}>
+      <FormWrapper onSubmit={signupHandler}>
           { loading && <LoadingSpinner asOverlay />}
           <SingInTitle>Sign In</SingInTitle>
           <Input
@@ -32,17 +39,8 @@ const FormLogin = ({ loginHandler, inputHandler, loading, formState }) => {
             onInput={inputHandler}
             errorText="Email required"
           />
-          <Input
-            id="password"
-            type="password"
-            label="Password"
-            inputElement="input"
-            icon={password}
-            validators={[VALIDATOR_MINLENGTH(8)]}
-            onInput={inputHandler}
-            errorText="Please enter a valid password"
-          />
-          <AuthButton onClick={loginHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>SIGN IN</AuthButton>
+       
+          <AuthButton onClick={signupHandler} formIsValid={!formState.isValid} disabled={!formState.isValid}>SIGN UP</AuthButton>
       </FormWrapper>
     </FormContainer>
    );

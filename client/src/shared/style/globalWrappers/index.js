@@ -31,3 +31,10 @@ export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const ErrorTag = styled.p`
+  color: red;
+  font-size: ${rem("12px")};
+  padding-left: ${rem("10px")};
+  padding-bottom: ${rem("5px")};
+`;

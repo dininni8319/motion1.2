@@ -21,10 +21,6 @@ const Signup = () => {
       value: "",
       isValid: false,
     },
-    password: {
-      value: "",
-      isValid: false
-    }
   }, false)
   
   const {
@@ -62,7 +58,7 @@ const Signup = () => {
   return ( 
     <AuthLayout>
       <LeftContainer />
-      
+      {/* <FormSignUp */}
     </AuthLayout>
   );
 }
